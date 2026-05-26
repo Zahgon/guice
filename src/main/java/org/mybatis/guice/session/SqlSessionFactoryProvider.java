@@ -18,7 +18,6 @@ package org.mybatis.guice.session;
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
-
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -29,48 +28,47 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 @Singleton
 public final class SqlSessionFactoryProvider implements Provider<SqlSessionFactory> {
 
-  /**
-   * The SqlSessionFactory reference.
-   */
-  private SqlSessionFactory sqlSessionFactory;
+    /**
+     * The SqlSessionFactory reference.
+     */
+    private SqlSessionFactory sqlSessionFactory;
 
-  /**
-   * @since 1.0.1
-   */
-  public SqlSessionFactoryProvider() {
-    // do nothing
-  }
+    /**
+     * @since 1.0.1
+     */
+    public SqlSessionFactoryProvider() {
+        // do nothing
+    }
 
-  /**
-   * Creates a new SqlSessionFactory from the specified configuration.
-   *
-   * @param configuration
-   *          the specified configration.
-   */
-  @Deprecated
-  public SqlSessionFactoryProvider(final Configuration configuration) {
-    // do nothing
-  }
+    /**
+     * Creates a new SqlSessionFactory from the specified configuration.
+     *
+     * @param configuration
+     *          the specified configration.
+     */
+    @Deprecated
+    public SqlSessionFactoryProvider(final Configuration configuration) {
+        // do nothing
+    }
 
-  /**
-   * Creates a new SqlSessionFactory from the specified configuration.
-   *
-   * @param configuration
-   *          the specified configuration.
-   *
-   * @since 1.0.1
-   */
-  @Inject
-  public void createNewSqlSessionFactory(final Configuration configuration) {
-    this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-  }
+    /**
+     * Creates a new SqlSessionFactory from the specified configuration.
+     *
+     * @param configuration
+     *          the specified configuration.
+     *
+     * @since 1.0.1
+     */
+    @Inject
+    public void createNewSqlSessionFactory(final Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public SqlSessionFactory get() {
-    return sqlSessionFactory;
-  }
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public SqlSessionFactory get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

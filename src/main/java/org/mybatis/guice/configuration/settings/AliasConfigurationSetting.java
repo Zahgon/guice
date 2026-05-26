@@ -19,17 +19,17 @@ import org.apache.ibatis.session.Configuration;
 
 public final class AliasConfigurationSetting implements ConfigurationSetting {
 
-  private final String alias;
-  private final Class<?> clazz;
+    private final String alias;
 
-  public AliasConfigurationSetting(final String alias, final Class<?> clazz) {
-    this.alias = alias;
-    this.clazz = clazz;
-  }
+    private final Class<?> clazz;
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.getTypeAliasRegistry().registerAlias(alias, clazz);
-  }
+    public AliasConfigurationSetting(final String alias, final Class<?> clazz) {
+        this.alias = alias;
+        this.clazz = clazz;
+    }
 
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -19,15 +19,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class DefaultStatementTimeoutConfigurationSetting implements ConfigurationSetting {
 
-  private final Integer defaultStatementTimeout;
+    private final Integer defaultStatementTimeout;
 
-  public DefaultStatementTimeoutConfigurationSetting(Integer defaultStatementTimeout) {
-    this.defaultStatementTimeout = defaultStatementTimeout;
-  }
+    public DefaultStatementTimeoutConfigurationSetting(Integer defaultStatementTimeout) {
+        this.defaultStatementTimeout = defaultStatementTimeout;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setDefaultStatementTimeout(defaultStatementTimeout);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

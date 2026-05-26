@@ -17,13 +17,10 @@ package org.mybatis.guice.datasource.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.google.inject.Inject;
-
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.sql.SQLException;
 import java.util.Properties;
-
 import javax.sql.DataSource;
 
 /**
@@ -33,167 +30,160 @@ import javax.sql.DataSource;
  */
 public class DruidDataSourceProvider implements Provider<DataSource> {
 
-  DruidDataSource dataSource = new DruidDataSource();
+    DruidDataSource dataSource = new DruidDataSource();
 
-  @Inject
-  public void setDriverClassName(@Named("JDBC.driverClassName") final String driverClassName) {
-    dataSource.setDriverClassName(driverClassName);
-  }
+    @Inject
+    public void setDriverClassName(@Named("JDBC.driverClassName") final String driverClassName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setUrl(@Named("JDBC.url") final String url) {
-    dataSource.setUrl(url);
-  }
+    @Inject
+    public void setUrl(@Named("JDBC.url") final String url) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setUsername(@Named("JDBC.username") final String username) {
-    dataSource.setUsername(username);
-  }
+    @Inject
+    public void setUsername(@Named("JDBC.username") final String username) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setPassword(@Named("JDBC.password") final String password) {
-    dataSource.setPassword(password);
-  }
+    @Inject
+    public void setPassword(@Named("JDBC.password") final String password) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setDefaultAutoCommit(@Named("JDBC.autoCommit") final boolean defaultAutoCommit) {
-    dataSource.setDefaultAutoCommit(defaultAutoCommit);
-  }
+    @Inject(optional = true)
+    public void setDefaultAutoCommit(@Named("JDBC.autoCommit") final boolean defaultAutoCommit) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setDefaultReadOnly(@Named("JDBC.readOnly") final boolean defaultReadOnly) {
-    dataSource.setDefaultReadOnly(defaultReadOnly);
-  }
+    @Inject(optional = true)
+    public void setDefaultReadOnly(@Named("JDBC.readOnly") final boolean defaultReadOnly) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setDefaultTransactionIsolation(
-      @Named("JDBC.transactionIsolation") final int defaultTransactionIsolation) {
-    dataSource.setDefaultTransactionIsolation(defaultTransactionIsolation);
-  }
+    @Inject(optional = true)
+    public void setDefaultTransactionIsolation(@Named("JDBC.transactionIsolation") final int defaultTransactionIsolation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setDefaultCatalog(@Named("JDBC.catalog") final String defaultCatalog) {
-    dataSource.setDefaultCatalog(defaultCatalog);
-  }
+    @Inject(optional = true)
+    public void setDefaultCatalog(@Named("JDBC.catalog") final String defaultCatalog) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setMaxActive(@Named("JDBC.maxActive") final int maxActive) {
-    dataSource.setMaxActive(maxActive);
-  }
+    @Inject(optional = true)
+    public void setMaxActive(@Named("JDBC.maxActive") final int maxActive) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setMinIdle(@Named("JDBC.minIdle") final int minIdle) {
-    dataSource.setMinIdle(minIdle);
-  }
+    @Inject(optional = true)
+    public void setMinIdle(@Named("JDBC.minIdle") final int minIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setInitialSize(@Named("JDBC.initialSize") final int initialSize) {
-    dataSource.setInitialSize(initialSize);
-  }
+    @Inject(optional = true)
+    public void setInitialSize(@Named("JDBC.initialSize") final int initialSize) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setMaxWait(@Named("JDBC.maxWait") final long maxWait) {
-    dataSource.setMaxWait(maxWait);
-  }
+    @Inject(optional = true)
+    public void setMaxWait(@Named("JDBC.maxWait") final long maxWait) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setTestOnBorrow(@Named("JDBC.testOnBorrow") final boolean testOnBorrow) {
-    dataSource.setTestOnBorrow(testOnBorrow);
-  }
+    @Inject(optional = true)
+    public void setTestOnBorrow(@Named("JDBC.testOnBorrow") final boolean testOnBorrow) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setTestOnReturn(@Named("JDBC.testOnReturn") final boolean testOnReturn) {
-    dataSource.setTestOnReturn(testOnReturn);
-  }
+    @Inject(optional = true)
+    public void setTestOnReturn(@Named("JDBC.testOnReturn") final boolean testOnReturn) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setTimeBetweenEvictionRunsMillis(
-      @Named("JDBC.timeBetweenEvictionRunsMillis") final long timeBetweenEvictionRunsMillis) {
-    dataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-  }
+    @Inject(optional = true)
+    public void setTimeBetweenEvictionRunsMillis(@Named("JDBC.timeBetweenEvictionRunsMillis") final long timeBetweenEvictionRunsMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setMinEvictableIdleTimeMillis(
-      @Named("JDBC.minEvictableIdleTimeMillis") final long minEvictableIdleTimeMillis) {
-    dataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
-  }
+    @Inject(optional = true)
+    public void setMinEvictableIdleTimeMillis(@Named("JDBC.minEvictableIdleTimeMillis") final long minEvictableIdleTimeMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setTestWhileIdle(@Named("JDBC.testWhileIdle") final boolean testWhileIdle) {
-    dataSource.setTestWhileIdle(testWhileIdle);
-  }
+    @Inject(optional = true)
+    public void setTestWhileIdle(@Named("JDBC.testWhileIdle") final boolean testWhileIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setValidationQuery(@Named("JDBC.validationQuery") final String validationQuery) {
-    dataSource.setValidationQuery(validationQuery);
-  }
+    @Inject(optional = true)
+    public void setValidationQuery(@Named("JDBC.validationQuery") final String validationQuery) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setValidationQueryTimeout(@Named("JDBC.validationQueryTimeout") final int validationQueryTimeout) {
-    dataSource.setValidationQueryTimeout(validationQueryTimeout);
-  }
+    @Inject(optional = true)
+    public void setValidationQueryTimeout(@Named("JDBC.validationQueryTimeout") final int validationQueryTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setAccessToUnderlyingConnectionAllowed(
-      @Named("JDBC.accessToUnderlyingConnectionAllowed") final boolean accessToUnderlyingConnectionAllowed) {
-    dataSource.setAccessToUnderlyingConnectionAllowed(accessToUnderlyingConnectionAllowed);
-  }
+    @Inject(optional = true)
+    public void setAccessToUnderlyingConnectionAllowed(@Named("JDBC.accessToUnderlyingConnectionAllowed") final boolean accessToUnderlyingConnectionAllowed) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setRemoveAbandoned(@Named("JDBC.removeAbandoned") final boolean removeAbandoned) {
-    dataSource.setRemoveAbandoned(removeAbandoned);
-  }
+    @Inject(optional = true)
+    public void setRemoveAbandoned(@Named("JDBC.removeAbandoned") final boolean removeAbandoned) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setRemoveAbandonedTimeout(@Named("JDBC.removeAbandonedTimeout") final int removeAbandonedTimeout) {
-    dataSource.setRemoveAbandonedTimeout(removeAbandonedTimeout);
-  }
+    @Inject(optional = true)
+    public void setRemoveAbandonedTimeout(@Named("JDBC.removeAbandonedTimeout") final int removeAbandonedTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setLogAbandoned(@Named("JDBC.logAbandoned") final boolean logAbandoned) {
-    dataSource.setLogAbandoned(logAbandoned);
-  }
+    @Inject(optional = true)
+    public void setLogAbandoned(@Named("JDBC.logAbandoned") final boolean logAbandoned) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setPoolPreparedStatements(@Named("JDBC.poolPreparedStatements") final boolean poolPreparedStatements) {
-    dataSource.setPoolPreparedStatements(poolPreparedStatements);
-  }
+    @Inject(optional = true)
+    public void setPoolPreparedStatements(@Named("JDBC.poolPreparedStatements") final boolean poolPreparedStatements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setMaxOpenPreparedStatements(
-      @Named("JDBC.maxOpenPreparedStatements") final int maxOpenPreparedStatements) {
-    dataSource.setMaxOpenPreparedStatements(maxOpenPreparedStatements);
-  }
+    @Inject(optional = true)
+    public void setMaxOpenPreparedStatements(@Named("JDBC.maxOpenPreparedStatements") final int maxOpenPreparedStatements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setConnectProperties(@Named("JDBC.connectProperties") final Properties connectionProperties) {
-    dataSource.setConnectProperties(connectionProperties);
-  }
+    @Inject(optional = true)
+    public void setConnectProperties(@Named("JDBC.connectProperties") final Properties connectionProperties) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setConnectionProperties(@Named("JDBC.connectionProperties") final String connectionProperties) {
-    dataSource.setConnectionProperties(connectionProperties);
-  }
+    @Inject(optional = true)
+    public void setConnectionProperties(@Named("JDBC.connectionProperties") final String connectionProperties) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setFilters(@Named("JDBC.filters") final String filters) throws SQLException {
-    dataSource.setFilters(filters);
-  }
+    @Inject(optional = true)
+    public void setFilters(@Named("JDBC.filters") final String filters) throws SQLException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setExceptionSorter(@Named("JDBC.exceptionSorter") final String exceptionSorter) throws SQLException {
-    dataSource.setExceptionSorter(exceptionSorter);
-  }
+    @Inject(optional = true)
+    public void setExceptionSorter(@Named("JDBC.exceptionSorter") final String exceptionSorter) throws SQLException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject(optional = true)
-  public void setExceptionSorterClassName(@Named("JDBC.exceptionSorterClassName") final String exceptionSorterClassName)
-      throws Exception {
-    dataSource.setExceptionSorterClassName(exceptionSorterClassName);
-  }
+    @Inject(optional = true)
+    public void setExceptionSorterClassName(@Named("JDBC.exceptionSorterClassName") final String exceptionSorterClassName) throws Exception {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public DataSource get() {
-    return dataSource;
-  }
-
+    @Override
+    public DataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

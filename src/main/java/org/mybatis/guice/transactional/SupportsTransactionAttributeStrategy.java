@@ -16,8 +16,9 @@
 package org.mybatis.guice.transactional;
 
 public class SupportsTransactionAttributeStrategy implements TransactionAttributeStrategy {
-  @Override
-  public TransactionAttribute getTransactionAttribute() {
-    return TransactionAttribute.SUPPORTS;
-  }
+
+    @Override
+    public TransactionAttribute getTransactionAttribute() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

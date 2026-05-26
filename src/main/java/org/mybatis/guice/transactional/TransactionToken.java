@@ -18,53 +18,55 @@ package org.mybatis.guice.transactional;
 import jakarta.transaction.Transaction;
 
 public class TransactionToken {
-  private Transaction activeTransaction;
-  private Transaction suspendedTransaction;
-  private TransactionAttribute transactionAttribute;
-  private boolean isCompletionAllowed;
 
-  public TransactionToken(Transaction activeTransaction, Transaction suspendedTransaction,
-      TransactionAttribute transactionAttribute) {
-    this(activeTransaction, suspendedTransaction, transactionAttribute, false);
-  }
+    private Transaction activeTransaction;
 
-  TransactionToken(Transaction activeTransaction, Transaction suspendedTransaction,
-      TransactionAttribute transactionAttribute, boolean isCompletionAllowed) {
-    this.activeTransaction = activeTransaction;
-    this.suspendedTransaction = suspendedTransaction;
-    this.transactionAttribute = transactionAttribute;
-    this.isCompletionAllowed = isCompletionAllowed;
-  }
+    private Transaction suspendedTransaction;
 
-  public Transaction getActiveTransaction() {
-    return activeTransaction;
-  }
+    private TransactionAttribute transactionAttribute;
 
-  public void setActiveTransaction(Transaction activeTransaction) {
-    this.activeTransaction = activeTransaction;
-  }
+    private boolean isCompletionAllowed;
 
-  public Transaction getSuspendedTransaction() {
-    return suspendedTransaction;
-  }
+    public TransactionToken(Transaction activeTransaction, Transaction suspendedTransaction, TransactionAttribute transactionAttribute) {
+        this(activeTransaction, suspendedTransaction, transactionAttribute, false);
+    }
 
-  public void setSuspendedTransaction(Transaction suspendedTransaction) {
-    this.suspendedTransaction = suspendedTransaction;
-  }
+    TransactionToken(Transaction activeTransaction, Transaction suspendedTransaction, TransactionAttribute transactionAttribute, boolean isCompletionAllowed) {
+        this.activeTransaction = activeTransaction;
+        this.suspendedTransaction = suspendedTransaction;
+        this.transactionAttribute = transactionAttribute;
+        this.isCompletionAllowed = isCompletionAllowed;
+    }
 
-  public TransactionAttribute getTransactionAttribute() {
-    return transactionAttribute;
-  }
+    public Transaction getActiveTransaction() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setTransactionStrategy(TransactionAttribute transactionAttribute) {
-    this.transactionAttribute = transactionAttribute;
-  }
+    public void setActiveTransaction(Transaction activeTransaction) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public boolean isCompletionAllowed() {
-    return isCompletionAllowed;
-  }
+    public Transaction getSuspendedTransaction() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setCompletionAllowed(boolean isCompletionAllowed) {
-    this.isCompletionAllowed = isCompletionAllowed;
-  }
+    public void setSuspendedTransaction(Transaction suspendedTransaction) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public TransactionAttribute getTransactionAttribute() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void setTransactionStrategy(TransactionAttribute transactionAttribute) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public boolean isCompletionAllowed() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void setCompletionAllowed(boolean isCompletionAllowed) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

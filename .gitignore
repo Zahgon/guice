@@ -14,3 +14,8 @@
 .mvn/wrapper/maven-wrapper.jar
 release.properties
 pom.xml.releaseBackup
+
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/

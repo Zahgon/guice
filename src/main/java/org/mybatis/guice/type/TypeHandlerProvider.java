@@ -17,13 +17,10 @@ package org.mybatis.guice.type;
 
 import com.google.inject.Injector;
 import com.google.inject.TypeLiteral;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import java.lang.reflect.Constructor;
 import java.util.Objects;
-
 import org.apache.ibatis.type.TypeException;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -31,72 +28,47 @@ import org.apache.ibatis.type.TypeHandler;
  * A generic MyBatis type provider.
  */
 public final class TypeHandlerProvider<TH extends TypeHandler<? extends T>, T> implements Provider<TH> {
-  private final TypeLiteral<TH> typeHandlerTypeLiteral;
-  private final Class<T> handledType;
-  @Inject
-  private Injector injector;
 
-  public TypeHandlerProvider(Class<TH> typeHandlerType, Class<T> handledType) {
-    this.typeHandlerTypeLiteral = TypeLiteral.get(typeHandlerType);
-    this.handledType = handledType;
-  }
+    private final TypeLiteral<TH> typeHandlerTypeLiteral;
 
-  public TypeHandlerProvider(TypeLiteral<TH> typeHandlerType, Class<T> handledType) {
-    this.typeHandlerTypeLiteral = typeHandlerType;
-    this.handledType = handledType;
-  }
+    private final Class<T> handledType;
 
-  TypeHandlerProvider(Injector injector, Class<TH> typeHandlerType, Class<T> handledType) {
-    this(typeHandlerType, handledType);
-    this.injector = injector;
-  }
+    @Inject
+    private Injector injector;
 
-  TypeHandlerProvider(Injector injector, TypeLiteral<TH> typeHandlerType, Class<T> handledType) {
-    this(typeHandlerType, handledType);
-    this.injector = injector;
-  }
-
-  @Override
-  @SuppressWarnings("unchecked")
-  public TH get() {
-    TH instance = null;
-    if (handledType != null) {
-      try {
-        Constructor<?> c = typeHandlerTypeLiteral.getRawType().getConstructor(Class.class);
-        instance = (TH) c.newInstance(handledType);
-        injector.injectMembers(instance);
-      } catch (NoSuchMethodException ignored) {
-        // ignored
-      } catch (Exception e) {
-        throw new TypeException("Failed invoking constructor for handler " + typeHandlerTypeLiteral.getType(), e);
-      }
+    public TypeHandlerProvider(Class<TH> typeHandlerType, Class<T> handledType) {
+        this.typeHandlerTypeLiteral = TypeLiteral.get(typeHandlerType);
+        this.handledType = handledType;
     }
-    if (instance == null) {
-      try {
-        instance = (TH) typeHandlerTypeLiteral.getRawType().getConstructor().newInstance();
-        injector.injectMembers(instance);
-      } catch (Exception e) {
-        throw new TypeException("Failed invoking constructor for handler " + typeHandlerTypeLiteral.getType(), e);
-      }
-    }
-    return instance;
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(this.typeHandlerTypeLiteral, this.handledType);
-  }
+    public TypeHandlerProvider(TypeLiteral<TH> typeHandlerType, Class<T> handledType) {
+        this.typeHandlerTypeLiteral = typeHandlerType;
+        this.handledType = handledType;
+    }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
+    TypeHandlerProvider(Injector injector, Class<TH> typeHandlerType, Class<T> handledType) {
+        this(typeHandlerType, handledType);
+        this.injector = injector;
     }
-    if (this.getClass() != obj.getClass()) {
-      return false;
+
+    TypeHandlerProvider(Injector injector, TypeLiteral<TH> typeHandlerType, Class<T> handledType) {
+        this(typeHandlerType, handledType);
+        this.injector = injector;
     }
-    TypeHandlerProvider other = (TypeHandlerProvider) obj;
-    return Objects.equals(this.typeHandlerTypeLiteral, other.typeHandlerTypeLiteral)
-        && Objects.equals(this.handledType, other.handledType);
-  }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public TH get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

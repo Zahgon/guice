@@ -18,12 +18,9 @@ package org.mybatis.guice.datasource.builtin;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.util.Properties;
-
 import javax.naming.Context;
 import javax.sql.DataSource;
-
 import org.apache.ibatis.datasource.jndi.JndiDataSourceFactory;
 
 /**
@@ -31,57 +28,57 @@ import org.apache.ibatis.datasource.jndi.JndiDataSourceFactory;
  */
 public final class JndiDataSourceProvider implements Provider<DataSource> {
 
-  /** The properties. */
-  private final Properties properties = new Properties();
+    /**
+     * The properties.
+     */
+    private final Properties properties = new Properties();
 
-  /**
-   * Creates a new JndiDataSourceProvider with the specified JNDI data source.
-   *
-   * @param dataSource
-   *          the JNDI datasource name (fully qualified)
-   */
-  @Inject
-  public JndiDataSourceProvider(@Named("jndi.dataSource") final String dataSource) {
-    properties.setProperty(JndiDataSourceFactory.DATA_SOURCE, dataSource);
-  }
+    /**
+     * Creates a new JndiDataSourceProvider with the specified JNDI data source.
+     *
+     * @param dataSource
+     *          the JNDI datasource name (fully qualified)
+     */
+    @Inject
+    public JndiDataSourceProvider(@Named("jndi.dataSource") final String dataSource) {
+        properties.setProperty(JndiDataSourceFactory.DATA_SOURCE, dataSource);
+    }
 
-  /**
-   * Sets the initial context.
-   *
-   * @param initialContext
-   *          the new initial context
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setInitialContext(@Named("jndi.initialContext") final String initialContext) {
-    properties.setProperty(JndiDataSourceFactory.INITIAL_CONTEXT, initialContext);
-  }
+    /**
+     * Sets the initial context.
+     *
+     * @param initialContext
+     *          the new initial context
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setInitialContext(@Named("jndi.initialContext") final String initialContext) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the env initial context factory.
-   *
-   * @param initialContextFactory
-   *          the new env initial context factory
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setEnvInitialContextFactory(@Named(Context.INITIAL_CONTEXT_FACTORY) final String initialContextFactory) {
-    properties.setProperty(JndiDataSourceFactory.ENV_PREFIX + Context.INITIAL_CONTEXT_FACTORY, initialContextFactory);
-  }
+    /**
+     * Sets the env initial context factory.
+     *
+     * @param initialContextFactory
+     *          the new env initial context factory
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setEnvInitialContextFactory(@Named(Context.INITIAL_CONTEXT_FACTORY) final String initialContextFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the env provider URL.
-   *
-   * @param providerUrl
-   *          the new env provider URL
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setEnvProviderURL(@Named(Context.PROVIDER_URL) final String providerUrl) {
-    properties.setProperty(JndiDataSourceFactory.ENV_PREFIX + Context.PROVIDER_URL, providerUrl);
-  }
+    /**
+     * Sets the env provider URL.
+     *
+     * @param providerUrl
+     *          the new env provider URL
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setEnvProviderURL(@Named(Context.PROVIDER_URL) final String providerUrl) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public DataSource get() {
-    JndiDataSourceFactory factory = new JndiDataSourceFactory();
-    factory.setProperties(properties);
-    return factory.getDataSource();
-  }
+    @Override
+    public DataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

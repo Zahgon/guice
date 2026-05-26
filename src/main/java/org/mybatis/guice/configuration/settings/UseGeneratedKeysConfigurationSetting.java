@@ -19,15 +19,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class UseGeneratedKeysConfigurationSetting implements ConfigurationSetting {
 
-  private final boolean useGeneratedKeys;
+    private final boolean useGeneratedKeys;
 
-  public UseGeneratedKeysConfigurationSetting(final boolean useGeneratedKeys) {
-    this.useGeneratedKeys = useGeneratedKeys;
-  }
+    public UseGeneratedKeysConfigurationSetting(final boolean useGeneratedKeys) {
+        this.useGeneratedKeys = useGeneratedKeys;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setUseGeneratedKeys(useGeneratedKeys);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

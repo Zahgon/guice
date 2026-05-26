@@ -20,16 +20,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class DefaultScriptingLanguageTypeConfigurationSetting implements ConfigurationSetting {
 
-  private final Class<? extends LanguageDriver> defaultScriptingLanguageType;
+    private final Class<? extends LanguageDriver> defaultScriptingLanguageType;
 
-  public DefaultScriptingLanguageTypeConfigurationSetting(
-      Class<? extends LanguageDriver> defaultScriptingLanguageType) {
-    this.defaultScriptingLanguageType = defaultScriptingLanguageType;
-  }
+    public DefaultScriptingLanguageTypeConfigurationSetting(Class<? extends LanguageDriver> defaultScriptingLanguageType) {
+        this.defaultScriptingLanguageType = defaultScriptingLanguageType;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setDefaultScriptingLanguage(defaultScriptingLanguageType);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -18,11 +18,8 @@ package org.mybatis.guice.datasource.dbcp;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.time.Duration;
-
 import javax.sql.ConnectionPoolDataSource;
-
 import org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS;
 
 /**
@@ -30,102 +27,100 @@ import org.apache.commons.dbcp2.cpdsadapter.DriverAdapterCPDS;
  */
 public final class DriverAdapterCPDSProvider implements Provider<ConnectionPoolDataSource> {
 
-  private final DriverAdapterCPDS adapter = new DriverAdapterCPDS();
+    private final DriverAdapterCPDS adapter = new DriverAdapterCPDS();
 
-  /**
-   * Instantiates a new driver adapter CPDS provider.
-   *
-   * @param driver
-   *          the driver
-   * @param url
-   *          the url
-   */
-  @Inject
-  public DriverAdapterCPDSProvider(@Named("JDBC.driver") final String driver, @Named("JDBC.url") final String url) {
-    try {
-      adapter.setDriver(driver);
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException("Driver '" + driver + "' not found in the classpath", e);
+    /**
+     * Instantiates a new driver adapter CPDS provider.
+     *
+     * @param driver
+     *          the driver
+     * @param url
+     *          the url
+     */
+    @Inject
+    public DriverAdapterCPDSProvider(@Named("JDBC.driver") final String driver, @Named("JDBC.url") final String url) {
+        try {
+            adapter.setDriver(driver);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Driver '" + driver + "' not found in the classpath", e);
+        }
+        adapter.setUrl(url);
     }
-    adapter.setUrl(url);
-  }
 
-  /**
-   * Sets the user.
-   *
-   * @param username
-   *          the new user
-   *
-   * @since 3.3
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setUser(@Named("JDBC.username") final String username) {
-    adapter.setUser(username);
-  }
+    /**
+     * Sets the user.
+     *
+     * @param username
+     *          the new user
+     *
+     * @since 3.3
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setUser(@Named("JDBC.username") final String username) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the password.
-   *
-   * @param password
-   *          the new password
-   *
-   * @since 3.3
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setPassword(@Named("JDBC.password") final String password) {
-    adapter.setPassword(password);
-  }
+    /**
+     * Sets the password.
+     *
+     * @param password
+     *          the new password
+     *
+     * @since 3.3
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setPassword(@Named("JDBC.password") final String password) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the description.
-   *
-   * @param description
-   *          the new description
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setDescription(@Named("DBCP.description") String description) {
-    adapter.setDescription(description);
-  }
+    /**
+     * Sets the description.
+     *
+     * @param description
+     *          the new description
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setDescription(@Named("DBCP.description") String description) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setLoginTimeout(@Named("JDBC.loginTimeout") int seconds) {
-    adapter.setLoginTimeout(seconds);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setLoginTimeout(@Named("JDBC.loginTimeout") int seconds) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMaxIdle(@Named("DBCP.maxIdle") int maxIdle) {
-    adapter.setMaxIdle(maxIdle);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMaxIdle(@Named("DBCP.maxIdle") int maxIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMaxPreparedStatements(@Named("DBCP.maxOpenPreparedStatements") int maxPreparedStatements) {
-    adapter.setMaxPreparedStatements(maxPreparedStatements);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMaxPreparedStatements(@Named("DBCP.maxOpenPreparedStatements") int maxPreparedStatements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMinEvictableIdleTimeMillis(@Named("DBCP.minEvictableIdleTimeMillis") int minEvictableIdleTimeMillis) {
-    adapter.setMinEvictableIdleDuration(Duration.ofMillis(minEvictableIdleTimeMillis));
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMinEvictableIdleTimeMillis(@Named("DBCP.minEvictableIdleTimeMillis") int minEvictableIdleTimeMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setNumTestsPerEvictionRun(@Named("DBCP.numTestsPerEvictionRun") int numTestsPerEvictionRun) {
-    adapter.setNumTestsPerEvictionRun(numTestsPerEvictionRun);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setNumTestsPerEvictionRun(@Named("DBCP.numTestsPerEvictionRun") int numTestsPerEvictionRun) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setPoolPreparedStatements(@Named("DBCP.poolPreparedStatements") boolean poolPreparedStatements) {
-    adapter.setPoolPreparedStatements(poolPreparedStatements);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setPoolPreparedStatements(@Named("DBCP.poolPreparedStatements") boolean poolPreparedStatements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setTimeBetweenEvictionRunsMillis(
-      @Named("DBCP.timeBetweenEvictionRunsMillis") int timeBetweenEvictionRunsMillis) {
-    adapter.setDurationBetweenEvictionRuns(Duration.ofMillis(timeBetweenEvictionRunsMillis));
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setTimeBetweenEvictionRunsMillis(@Named("DBCP.timeBetweenEvictionRunsMillis") int timeBetweenEvictionRunsMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public ConnectionPoolDataSource get() {
-    return adapter;
-  }
-
+    @Override
+    public ConnectionPoolDataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

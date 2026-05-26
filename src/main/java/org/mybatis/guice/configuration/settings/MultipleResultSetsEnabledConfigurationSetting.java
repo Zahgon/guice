@@ -23,14 +23,14 @@ import org.apache.ibatis.session.Configuration;
 @Deprecated
 public class MultipleResultSetsEnabledConfigurationSetting implements ConfigurationSetting {
 
-  private final boolean multipleResultSetsEnabled;
+    private final boolean multipleResultSetsEnabled;
 
-  public MultipleResultSetsEnabledConfigurationSetting(final boolean multipleResultSetsEnabled) {
-    this.multipleResultSetsEnabled = multipleResultSetsEnabled;
-  }
+    public MultipleResultSetsEnabledConfigurationSetting(final boolean multipleResultSetsEnabled) {
+        this.multipleResultSetsEnabled = multipleResultSetsEnabled;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setMultipleResultSetsEnabled(multipleResultSetsEnabled);
-  }
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

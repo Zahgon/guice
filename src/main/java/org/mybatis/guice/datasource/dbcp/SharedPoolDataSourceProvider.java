@@ -17,12 +17,9 @@ package org.mybatis.guice.datasource.dbcp;
 
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.time.Duration;
-
 import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.datasources.SharedPoolDataSource;
 
 /**
@@ -30,128 +27,123 @@ import org.apache.commons.dbcp2.datasources.SharedPoolDataSource;
  */
 public final class SharedPoolDataSourceProvider implements Provider<DataSource> {
 
-  private final SharedPoolDataSource dataSource = new SharedPoolDataSource();
+    private final SharedPoolDataSource dataSource = new SharedPoolDataSource();
 
-  @com.google.inject.Inject(optional = true)
-  public void setConnectionPoolDataSource(ConnectionPoolDataSource cpds) {
-    dataSource.setConnectionPoolDataSource(cpds);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setConnectionPoolDataSource(ConnectionPoolDataSource cpds) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDataSourceName(@Named("DBCP.name") String name) {
-    dataSource.setDataSourceName(name);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDataSourceName(@Named("DBCP.name") String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultAutoCommit(@Named("JDBC.autoCommit") boolean autoCommit) {
-    dataSource.setDefaultAutoCommit(autoCommit);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultAutoCommit(@Named("JDBC.autoCommit") boolean autoCommit) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultReadOnly(@Named("DBCP.defaultReadOnly") boolean defaultReadOnly) {
-    dataSource.setDefaultReadOnly(defaultReadOnly);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultReadOnly(@Named("DBCP.defaultReadOnly") boolean defaultReadOnly) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultTransactionIsolation(
-      @Named("DBCP.defaultTransactionIsolation") int defaultTransactionIsolation) {
-    dataSource.setDefaultTransactionIsolation(defaultTransactionIsolation);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultTransactionIsolation(@Named("DBCP.defaultTransactionIsolation") int defaultTransactionIsolation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDescription(@Named("DBCP.description") String description) {
-    dataSource.setDescription(description);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDescription(@Named("DBCP.description") String description) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setJndiEnvironment(@Named("DBCP.jndi.key") String key, @Named("DBCP.jndi.value") String value) {
-    dataSource.setJndiEnvironment(key, value);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setJndiEnvironment(@Named("DBCP.jndi.key") String key, @Named("DBCP.jndi.value") String value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setLoginTimeout(@Named("JDBC.loginTimeout") int loginTimeout) {
-    dataSource.setLoginTimeout(Duration.ofSeconds(loginTimeout));
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setLoginTimeout(@Named("JDBC.loginTimeout") int loginTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultMinEvictableIdleTimeMillis(
-      @Named("DBCP.defaultMinEvictableIdleTimeMillis") int defaultMinEvictableIdleTimeMillis) {
-    dataSource.setDefaultMinEvictableIdle(Duration.ofMillis(defaultMinEvictableIdleTimeMillis));
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultMinEvictableIdleTimeMillis(@Named("DBCP.defaultMinEvictableIdleTimeMillis") int defaultMinEvictableIdleTimeMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultNumTestsPerEvictionRun(
-      @Named("DBCP.defaultNumTestsPerEvictionRun") int defaultNumTestsPerEvictionRun) {
-    dataSource.setDefaultNumTestsPerEvictionRun(defaultNumTestsPerEvictionRun);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultNumTestsPerEvictionRun(@Named("DBCP.defaultNumTestsPerEvictionRun") int defaultNumTestsPerEvictionRun) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setRollbackAfterValidation(@Named("DBCP.rollbackAfterValidation") boolean rollbackAfterValidation) {
-    dataSource.setRollbackAfterValidation(rollbackAfterValidation);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setRollbackAfterValidation(@Named("DBCP.rollbackAfterValidation") boolean rollbackAfterValidation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultTestOnBorrow(@Named("DBCP.defaultTestOnBorrow") boolean defaultTestOnBorrow) {
-    dataSource.setDefaultTestOnBorrow(defaultTestOnBorrow);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultTestOnBorrow(@Named("DBCP.defaultTestOnBorrow") boolean defaultTestOnBorrow) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultTestOnReturn(@Named("DBCP.defaultTestOnReturn") boolean defaultTestOnReturn) {
-    dataSource.setDefaultTestOnReturn(defaultTestOnReturn);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultTestOnReturn(@Named("DBCP.defaultTestOnReturn") boolean defaultTestOnReturn) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultTestWhileIdle(@Named("DBCP.defaultTestWhileIdle") boolean defaultTestWhileIdle) {
-    dataSource.setDefaultTestWhileIdle(defaultTestWhileIdle);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultTestWhileIdle(@Named("DBCP.defaultTestWhileIdle") boolean defaultTestWhileIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultTimeBetweenEvictionRunsMillis(
-      @Named("DBCP.defaultTimeBetweenEvictionRunsMillis") int defaultTimeBetweenEvictionRunsMillis) {
-    dataSource.setDefaultDurationBetweenEvictionRuns(Duration.ofMillis((defaultTimeBetweenEvictionRunsMillis)));
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultTimeBetweenEvictionRunsMillis(@Named("DBCP.defaultTimeBetweenEvictionRunsMillis") int defaultTimeBetweenEvictionRunsMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setValidationQuery(@Named("DBCP.validationQuery") String validationQuery) {
-    dataSource.setValidationQuery(validationQuery);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setValidationQuery(@Named("DBCP.validationQuery") String validationQuery) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the default max total.
-   *
-   * @param defaultMaxTotal
-   *          the new default max total
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultMaxTotal(@Named("DBCP.defaultMaxTotal") final int defaultMaxTotal) {
-    dataSource.setDefaultMaxTotal(defaultMaxTotal);
-  }
+    /**
+     * Sets the default max total.
+     *
+     * @param defaultMaxTotal
+     *          the new default max total
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultMaxTotal(@Named("DBCP.defaultMaxTotal") final int defaultMaxTotal) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the default max idle.
-   *
-   * @param defaultMaxIdle
-   *          the new default max idle
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultMaxIdle(@Named("DBCP.defaultMaxIdle") final int defaultMaxIdle) {
-    dataSource.setDefaultMaxIdle(defaultMaxIdle);
-  }
+    /**
+     * Sets the default max idle.
+     *
+     * @param defaultMaxIdle
+     *          the new default max idle
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultMaxIdle(@Named("DBCP.defaultMaxIdle") final int defaultMaxIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the default max wait in milliseconds.
-   *
-   * @param defaultMaxWaitMillis
-   *          the new default max wait in milliseconds
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setDefaultMaxWaitMillis(@Named("DBCP.defaultMaxWaitMillis") final int defaultMaxWaitMillis) {
-    dataSource.setDefaultMaxWait(Duration.ofMillis(defaultMaxWaitMillis));
-  }
+    /**
+     * Sets the default max wait in milliseconds.
+     *
+     * @param defaultMaxWaitMillis
+     *          the new default max wait in milliseconds
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setDefaultMaxWaitMillis(@Named("DBCP.defaultMaxWaitMillis") final int defaultMaxWaitMillis) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public DataSource get() {
-    return dataSource;
-  }
-
+    @Override
+    public DataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

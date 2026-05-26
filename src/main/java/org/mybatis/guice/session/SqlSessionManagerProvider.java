@@ -16,47 +16,44 @@
 package org.mybatis.guice.session;
 
 import static org.apache.ibatis.session.SqlSessionManager.newInstance;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionManager;
 
 @Singleton
 public final class SqlSessionManagerProvider implements Provider<SqlSessionManager> {
 
-  private SqlSessionManager sqlSessionManager;
+    private SqlSessionManager sqlSessionManager;
 
-  /**
-   * @since 1.0.1
-   */
-  public SqlSessionManagerProvider() {
-    // do nothing
-  }
+    /**
+     * @since 1.0.1
+     */
+    public SqlSessionManagerProvider() {
+        // do nothing
+    }
 
-  @Deprecated
-  public SqlSessionManagerProvider(SqlSessionFactory sqlSessionFactory) {
-    this.sqlSessionManager = newInstance(sqlSessionFactory);
-  }
+    @Deprecated
+    public SqlSessionManagerProvider(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionManager = newInstance(sqlSessionFactory);
+    }
 
-  /**
-   * Creates the new sql session manager.
-   *
-   * @param sqlSessionFactory
-   *          the sql session factory
-   *
-   * @since 1.0.1
-   */
-  @Inject
-  public void createNewSqlSessionManager(SqlSessionFactory sqlSessionFactory) {
-    this.sqlSessionManager = newInstance(sqlSessionFactory);
-  }
+    /**
+     * Creates the new sql session manager.
+     *
+     * @param sqlSessionFactory
+     *          the sql session factory
+     *
+     * @since 1.0.1
+     */
+    @Inject
+    public void createNewSqlSessionManager(SqlSessionFactory sqlSessionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public SqlSessionManager get() {
-    return sqlSessionManager;
-  }
-
+    @Override
+    public SqlSessionManager get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -16,52 +16,42 @@
 package org.mybatis.guice.datasource.helper;
 
 import static com.google.inject.name.Names.named;
-
 import com.google.inject.Injector;
 import com.google.inject.Key;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
 
 final class KeyResolver implements Provider<String> {
 
-  private final Key<String> key;
+    private final Key<String> key;
 
-  private final String defaultValue;
+    private final String defaultValue;
 
-  private final String toString;
+    private final String toString;
 
-  @Inject
-  private Injector injector;
+    @Inject
+    private Injector injector;
 
-  public KeyResolver(final String key, final String defaultValue) {
-    this.key = Key.get(String.class, named(key));
-    this.defaultValue = defaultValue;
-    toString = "${" + key + "}";
-  }
-
-  public void setInjector(Injector injector) {
-    this.injector = injector;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String get() {
-    try {
-      return injector.getInstance(key);
-    } catch (Throwable e) {
-      if (defaultValue != null) {
-        return defaultValue;
-      }
-      return toString;
+    public KeyResolver(final String key, final String defaultValue) {
+        this.key = Key.get(String.class, named(key));
+        this.defaultValue = defaultValue;
+        toString = "${" + key + "}";
     }
-  }
 
-  @Override
-  public String toString() {
-    return toString;
-  }
+    public void setInjector(Injector injector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

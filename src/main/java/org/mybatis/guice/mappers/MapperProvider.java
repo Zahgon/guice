@@ -17,9 +17,7 @@ package org.mybatis.guice.mappers;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import java.util.Objects;
-
 import org.apache.ibatis.session.SqlSessionManager;
 
 /**
@@ -27,38 +25,31 @@ import org.apache.ibatis.session.SqlSessionManager;
  */
 public final class MapperProvider<T> implements Provider<T> {
 
-  private final Class<T> mapperType;
+    private final Class<T> mapperType;
 
-  @Inject
-  private SqlSessionManager sqlSessionManager;
+    @Inject
+    private SqlSessionManager sqlSessionManager;
 
-  public MapperProvider(Class<T> mapperType) {
-    this.mapperType = mapperType;
-  }
-
-  public void setSqlSessionManager(SqlSessionManager sqlSessionManager) {
-    this.sqlSessionManager = sqlSessionManager;
-  }
-
-  @Override
-  public T get() {
-    return this.sqlSessionManager.getMapper(mapperType);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(this.mapperType);
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
+    public MapperProvider(Class<T> mapperType) {
+        this.mapperType = mapperType;
     }
-    if (this.getClass() != obj.getClass()) {
-      return false;
+
+    public void setSqlSessionManager(SqlSessionManager sqlSessionManager) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    MapperProvider other = (MapperProvider) obj;
-    return Objects.equals(this.mapperType, other.mapperType);
-  }
+
+    @Override
+    public T get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

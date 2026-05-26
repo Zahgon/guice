@@ -17,50 +17,44 @@ package org.mybatis.guice.configuration.settings;
 
 import com.google.inject.Injector;
 import com.google.inject.Key;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandler;
 
 public final class JavaTypeAndHandlerConfigurationSettingProvider implements Provider<ConfigurationSetting> {
-  @Inject
-  private Injector injector;
 
-  private final Wrapper<?> wrapper;
+    @Inject
+    private Injector injector;
 
-  private JavaTypeAndHandlerConfigurationSettingProvider(final Wrapper<?> wrapper) {
-    this.wrapper = wrapper;
-  }
+    private final Wrapper<?> wrapper;
 
-  @Override
-  public ConfigurationSetting get() {
-    return wrapper.get(injector);
-  }
-
-  public static <T> JavaTypeAndHandlerConfigurationSettingProvider create(final Class<T> type,
-      final Key<? extends TypeHandler<? extends T>> key) {
-    return new JavaTypeAndHandlerConfigurationSettingProvider(new Wrapper<T>(type, key));
-  }
-
-  private static class Wrapper<T> {
-    private final Class<T> type;
-    private final Key<? extends TypeHandler<? extends T>> key;
-
-    private Wrapper(final Class<T> type, final Key<? extends TypeHandler<? extends T>> key) {
-      this.type = type;
-      this.key = key;
+    private JavaTypeAndHandlerConfigurationSettingProvider(final Wrapper<?> wrapper) {
+        this.wrapper = wrapper;
     }
 
-    ConfigurationSetting get(Injector injector) {
-      final TypeHandler<? extends T> handlerInstance = injector.getInstance(key);
-      return new ConfigurationSetting() {
-        @Override
-        public void applyConfigurationSetting(Configuration configuration) {
-          configuration.getTypeHandlerRegistry().register(type, handlerInstance);
+    @Override
+    public ConfigurationSetting get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public static <T> JavaTypeAndHandlerConfigurationSettingProvider create(final Class<T> type, final Key<? extends TypeHandler<? extends T>> key) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    private static class Wrapper<T> {
+
+        private final Class<T> type;
+
+        private final Key<? extends TypeHandler<? extends T>> key;
+
+        private Wrapper(final Class<T> type, final Key<? extends TypeHandler<? extends T>> key) {
+            this.type = type;
+            this.key = key;
         }
-      };
+
+        ConfigurationSetting get(Injector injector) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
     }
-  }
 }

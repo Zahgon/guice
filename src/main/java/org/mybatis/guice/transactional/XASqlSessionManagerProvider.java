@@ -17,17 +17,16 @@ package org.mybatis.guice.transactional;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import javax.transaction.xa.XAResource;
-
 import org.apache.ibatis.session.SqlSessionManager;
 
 public class XASqlSessionManagerProvider implements Provider<XAResource> {
-  @Inject
-  private SqlSessionManager sqlSessionManager;
 
-  @Override
-  public XAResource get() {
-    return new XASqlSessionManager(sqlSessionManager);
-  }
+    @Inject
+    private SqlSessionManager sqlSessionManager;
+
+    @Override
+    public XAResource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

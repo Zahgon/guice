@@ -16,31 +16,27 @@
 package org.mybatis.guice.configuration.settings;
 
 import com.google.inject.Injector;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import org.apache.ibatis.reflection.factory.ObjectFactory;
 
 public class ObjectFactoryConfigurationSetting implements Provider<ConfigurationSetting> {
 
-  @Inject
-  private Injector injector;
+    @Inject
+    private Injector injector;
 
-  private final Class<? extends ObjectFactory> objectFactoryType;
+    private final Class<? extends ObjectFactory> objectFactoryType;
 
-  public ObjectFactoryConfigurationSetting(Class<? extends ObjectFactory> objectFactoryType) {
-    this.objectFactoryType = objectFactoryType;
-  }
+    public ObjectFactoryConfigurationSetting(Class<? extends ObjectFactory> objectFactoryType) {
+        this.objectFactoryType = objectFactoryType;
+    }
 
-  public void setInjector(final Injector injector) {
-    this.injector = injector;
-  }
+    public void setInjector(final Injector injector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public ConfigurationSetting get() {
-    final ObjectFactory objectFactory = injector.getInstance(objectFactoryType);
-    return configuration -> configuration.setObjectFactory(objectFactory);
-  }
-
+    @Override
+    public ConfigurationSetting get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

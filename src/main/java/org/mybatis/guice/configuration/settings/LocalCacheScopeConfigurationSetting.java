@@ -20,15 +20,14 @@ import org.apache.ibatis.session.LocalCacheScope;
 
 public class LocalCacheScopeConfigurationSetting implements ConfigurationSetting {
 
-  private final LocalCacheScope localCacheScope;
+    private final LocalCacheScope localCacheScope;
 
-  public LocalCacheScopeConfigurationSetting(final LocalCacheScope localCacheScope) {
-    this.localCacheScope = localCacheScope;
-  }
+    public LocalCacheScopeConfigurationSetting(final LocalCacheScope localCacheScope) {
+        this.localCacheScope = localCacheScope;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setLocalCacheScope(localCacheScope);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

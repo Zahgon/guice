@@ -17,12 +17,10 @@ package org.mybatis.guice;
 
 import static org.apache.ibatis.io.Resources.getResourceAsReader;
 import static org.mybatis.guice.Preconditions.checkArgument;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Collection;
 import java.util.Properties;
-
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -35,99 +33,51 @@ import org.apache.ibatis.type.TypeHandler;
  */
 public abstract class XMLMyBatisModule extends AbstractMyBatisModule {
 
-  private static final String DEFAULT_CONFIG_RESOURCE = "mybatis-config.xml";
+    private static final String DEFAULT_CONFIG_RESOURCE = "mybatis-config.xml";
 
-  private static final String DEFAULT_ENVIRONMENT_ID = null;
+    private static final String DEFAULT_ENVIRONMENT_ID = null;
 
-  private String classPathResource = DEFAULT_CONFIG_RESOURCE;
+    private String classPathResource = DEFAULT_CONFIG_RESOURCE;
 
-  private String environmentId = DEFAULT_ENVIRONMENT_ID;
+    private String environmentId = DEFAULT_ENVIRONMENT_ID;
 
-  private Properties properties = new Properties();
+    private Properties properties = new Properties();
 
-  /**
-   * Set the MyBatis configuration class path resource.
-   *
-   * @param classPathResource
-   *          the MyBatis configuration class path resource
-   */
-  protected final void setClassPathResource(String classPathResource) {
-    checkArgument(classPathResource != null, "Parameter 'classPathResource' must be not null");
-    this.classPathResource = classPathResource;
-  }
-
-  /**
-   * Set the MyBatis configuration environment id.
-   *
-   * @param environmentId
-   *          the MyBatis configuration environment id
-   */
-  protected final void setEnvironmentId(String environmentId) {
-    this.environmentId = environmentId;
-  }
-
-  /**
-   * Add the variables will be used to replace placeholders in the MyBatis configuration.
-   *
-   * @param properties
-   *          the variables will be used to replace placeholders in the MyBatis configuration
-   */
-  protected final void addProperties(Properties properties) {
-    if (properties != null) {
-      this.properties.putAll(properties);
+    /**
+     * Set the MyBatis configuration class path resource.
+     *
+     * @param classPathResource
+     *          the MyBatis configuration class path resource
+     */
+    protected final void setClassPathResource(String classPathResource) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  final void internalConfigure() {
-    this.initialize();
-
-    Reader reader = null;
-    try {
-      reader = getResourceAsReader(getResourceClassLoader(), classPathResource);
-      SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(reader, environmentId, properties);
-      bind(SqlSessionFactory.class).toInstance(sessionFactory);
-
-      Configuration configuration = sessionFactory.getConfiguration();
-
-      // bind mappers
-      Collection<Class<?>> mapperClasses = configuration.getMapperRegistry().getMappers();
-      for (Class<?> mapperType : mapperClasses) {
-        bindMapper(mapperType);
-      }
-
-      // request injection for type handlers
-      Collection<TypeHandler<?>> allTypeHandlers = configuration.getTypeHandlerRegistry().getTypeHandlers();
-      for (TypeHandler<?> handler : allTypeHandlers) {
-        requestInjection(handler);
-      }
-
-      // request injection for interceptors
-      Collection<Interceptor> interceptors = configuration.getInterceptors();
-      for (Interceptor interceptor : interceptors) {
-        requestInjection(interceptor);
-      }
-
-      // request injection for object factory.
-      requestInjection(configuration.getObjectFactory());
-
-      // request injection for object wrapper factory.
-      requestInjection(configuration.getObjectWrapperFactory());
-    } catch (Exception e) {
-      addError("Impossible to read classpath resource '%s', see nested exceptions: %s", classPathResource,
-          e.getMessage());
-    } finally {
-      if (reader != null) {
-        try {
-          reader.close();
-        } catch (IOException e) {
-          // close quietly
-        }
-      }
+    /**
+     * Set the MyBatis configuration environment id.
+     *
+     * @param environmentId
+     *          the MyBatis configuration environment id
+     */
+    protected final void setEnvironmentId(String environmentId) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 
+    /**
+     * Add the variables will be used to replace placeholders in the MyBatis configuration.
+     *
+     * @param properties
+     *          the variables will be used to replace placeholders in the MyBatis configuration
+     */
+    protected final void addProperties(Properties properties) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    final void internalConfigure() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -19,14 +19,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class AggressiveLazyLoadingConfigurationSetting implements ConfigurationSetting {
 
-  private final boolean aggressiveLazyLoading;
+    private final boolean aggressiveLazyLoading;
 
-  public AggressiveLazyLoadingConfigurationSetting(final boolean aggressiveLazyLoading) {
-    this.aggressiveLazyLoading = aggressiveLazyLoading;
-  }
+    public AggressiveLazyLoadingConfigurationSetting(final boolean aggressiveLazyLoading) {
+        this.aggressiveLazyLoading = aggressiveLazyLoading;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setAggressiveLazyLoading(aggressiveLazyLoading);
-  }
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

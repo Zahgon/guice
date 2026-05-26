@@ -19,15 +19,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class MapUnderscoreToCamelCaseConfigurationSetting implements ConfigurationSetting {
 
-  private final boolean mapUnderscoreToCamelCase;
+    private final boolean mapUnderscoreToCamelCase;
 
-  public MapUnderscoreToCamelCaseConfigurationSetting(final boolean mapUnderscoreToCamelCase) {
-    this.mapUnderscoreToCamelCase = mapUnderscoreToCamelCase;
-  }
+    public MapUnderscoreToCamelCaseConfigurationSetting(final boolean mapUnderscoreToCamelCase) {
+        this.mapUnderscoreToCamelCase = mapUnderscoreToCamelCase;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setMapUnderscoreToCamelCase(mapUnderscoreToCamelCase);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

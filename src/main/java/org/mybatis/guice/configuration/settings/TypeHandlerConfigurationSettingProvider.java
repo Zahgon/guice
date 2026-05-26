@@ -17,26 +17,23 @@ package org.mybatis.guice.configuration.settings;
 
 import com.google.inject.Injector;
 import com.google.inject.Key;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Provider;
-
 import org.apache.ibatis.type.TypeHandler;
 
 public final class TypeHandlerConfigurationSettingProvider implements Provider<ConfigurationSetting> {
-  @Inject
-  private Injector injector;
 
-  private final Key<? extends TypeHandler<?>> key;
+    @Inject
+    private Injector injector;
 
-  public TypeHandlerConfigurationSettingProvider(final Key<? extends TypeHandler<?>> key) {
-    this.key = key;
-  }
+    private final Key<? extends TypeHandler<?>> key;
 
-  @Override
-  public ConfigurationSetting get() {
-    final TypeHandler<?> handlerInstance = injector.getInstance(key);
-    return configuration -> configuration.getTypeHandlerRegistry().register(handlerInstance);
-  }
+    public TypeHandlerConfigurationSettingProvider(final Key<? extends TypeHandler<?>> key) {
+        this.key = key;
+    }
 
+    @Override
+    public ConfigurationSetting get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

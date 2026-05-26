@@ -19,9 +19,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
-
 import javax.sql.DataSource;
-
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.transaction.TransactionFactory;
 
@@ -31,37 +29,36 @@ import org.apache.ibatis.transaction.TransactionFactory;
 @Singleton
 public final class EnvironmentProvider implements Provider<Environment> {
 
-  /**
-   * The environment id.
-   */
-  @Inject
-  @Named("mybatis.environment.id")
-  private String id;
+    /**
+     * The environment id.
+     */
+    @Inject
+    @Named("mybatis.environment.id")
+    private String id;
 
-  @Inject
-  private TransactionFactory transactionFactory;
+    @Inject
+    private TransactionFactory transactionFactory;
 
-  @Inject
-  private DataSource dataSource;
+    @Inject
+    private DataSource dataSource;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public void setId(String id) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setTransactionFactory(TransactionFactory transactionFactory) {
-    this.transactionFactory = transactionFactory;
-  }
+    public void setTransactionFactory(TransactionFactory transactionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setDataSource(DataSource dataSource) {
-    this.dataSource = dataSource;
-  }
+    public void setDataSource(DataSource dataSource) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Environment get() {
-    return new Environment(id, transactionFactory, dataSource);
-  }
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Environment get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

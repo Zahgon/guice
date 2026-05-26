@@ -18,15 +18,12 @@ package org.mybatis.guice.datasource.hikaricp;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.metrics.MetricsTrackerFactory;
-
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.util.Properties;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadFactory;
-
 import javax.sql.DataSource;
 
 /**
@@ -36,180 +33,169 @@ import javax.sql.DataSource;
  * <a href="https://github.com/brettwooldridge/HikariCP">https://github.com/brettwooldridge/HikariCP</a>.
  */
 public final class HikariCPProvider implements Provider<DataSource> {
-  private final HikariConfig configuration = new HikariConfig();
 
-  private Integer loginTimeout;
+    private final HikariConfig configuration = new HikariConfig();
 
-  @Override
-  public DataSource get() {
-    HikariDataSource dataSource = new HikariDataSource(configuration);
-    if (loginTimeout != null) {
-      try {
-        dataSource.setLoginTimeout(loginTimeout);
-      } catch (Exception e) {
-        throw new RuntimeException("Failed to set login timeout '" + loginTimeout + "' for the HikariCP datasource", e);
-      }
+    private Integer loginTimeout;
+
+    @Override
+    public DataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    return dataSource;
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setAllowPoolSuspension(@Named("hikaricp.allowPoolSuspension") boolean allowPoolSuspension) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setAllowPoolSuspension(@Named("hikaricp.allowPoolSuspension") boolean allowPoolSuspension) {
-    configuration.setAllowPoolSuspension(allowPoolSuspension);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setAutoCommit(@Named("hikaricp.autoCommit") boolean autoCommit) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setAutoCommit(@Named("hikaricp.autoCommit") boolean autoCommit) {
-    configuration.setAutoCommit(autoCommit);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setCatalog(@Named("hikaricp.catalog") String catalog) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setCatalog(@Named("hikaricp.catalog") String catalog) {
-    configuration.setCatalog(catalog);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setConnectionInitSql(@Named("hikaricp.connectionInitSql") String connectionInitSql) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setConnectionInitSql(@Named("hikaricp.connectionInitSql") String connectionInitSql) {
-    configuration.setConnectionInitSql(connectionInitSql);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setConnectionTestQuery(@Named("hikaricp.connectionTestQuery") String connectionTestQuery) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setConnectionTestQuery(@Named("hikaricp.connectionTestQuery") String connectionTestQuery) {
-    configuration.setConnectionTestQuery(connectionTestQuery);
-  }
+    /**
+     * Sets the <code>connectionTimeout</code> HikariCP configuration property.
+     *
+     * @param connectionTimeoutMs
+     *          the connection timeout in milliseconds
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setConnectionTimeout(@Named("hikaricp.connectionTimeoutMs") long connectionTimeoutMs) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the <code>connectionTimeout</code> HikariCP configuration property.
-   *
-   * @param connectionTimeoutMs
-   *          the connection timeout in milliseconds
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setConnectionTimeout(@Named("hikaricp.connectionTimeoutMs") long connectionTimeoutMs) {
-    configuration.setConnectionTimeout(connectionTimeoutMs);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDriverClassName(@Named("hikaricp.driverClassName") String driverClassName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDriverClassName(@Named("hikaricp.driverClassName") String driverClassName) {
-    configuration.setDriverClassName(driverClassName);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setHealthCheckProperties(@Named("hikaricp.healthCheckProperties") Properties healthCheckProperties) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setHealthCheckProperties(@Named("hikaricp.healthCheckProperties") Properties healthCheckProperties) {
-    configuration.setHealthCheckProperties(healthCheckProperties);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setHealthCheckRegistry(@Named("hikaricp.healthCheckRegistry") Object healthCheckRegistry) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setHealthCheckRegistry(@Named("hikaricp.healthCheckRegistry") Object healthCheckRegistry) {
-    configuration.setHealthCheckRegistry(healthCheckRegistry);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setIdleTimeout(@Named("hikaricp.idleTimeoutMs") long idleTimeoutMs) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setIdleTimeout(@Named("hikaricp.idleTimeoutMs") long idleTimeoutMs) {
-    configuration.setIdleTimeout(idleTimeoutMs);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setInitializationFailTimeout(@Named("hikaricp.initializationFailTimeout") long initializationFailTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setInitializationFailTimeout(
-      @Named("hikaricp.initializationFailTimeout") long initializationFailTimeout) {
-    configuration.setInitializationFailTimeout(initializationFailTimeout);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setIsolateInternalQueries(@Named("hikaricp.isolateInternalQueries") boolean isolateInternalQueries) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setIsolateInternalQueries(@Named("hikaricp.isolateInternalQueries") boolean isolateInternalQueries) {
-    configuration.setIsolateInternalQueries(isolateInternalQueries);
-  }
+    @Inject
+    public void setJdbcUrl(@Named("JDBC.url") String jdbcUrl) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setJdbcUrl(@Named("JDBC.url") String jdbcUrl) {
-    configuration.setJdbcUrl(jdbcUrl);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setLeakDetectionThreshold(@Named("hikaricp.leakDetectionThresholdMs") long leakDetectionThresholdMs) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setLeakDetectionThreshold(@Named("hikaricp.leakDetectionThresholdMs") long leakDetectionThresholdMs) {
-    configuration.setLeakDetectionThreshold(leakDetectionThresholdMs);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setLoginTimeout(@Named("JDBC.loginTimeout") int loginTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setLoginTimeout(@Named("JDBC.loginTimeout") int loginTimeout) {
-    this.loginTimeout = loginTimeout;
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMaxLifetime(@Named("hikaricp.maxLifetimeMs") long maxLifetimeMs) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMaxLifetime(@Named("hikaricp.maxLifetimeMs") long maxLifetimeMs) {
-    configuration.setMaxLifetime(maxLifetimeMs);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMaximumPoolSize(@Named("hikaricp.maxPoolSize") int maxPoolSize) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMaximumPoolSize(@Named("hikaricp.maxPoolSize") int maxPoolSize) {
-    configuration.setMaximumPoolSize(maxPoolSize);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMetricRegistry(@Named("hikaricp.metricRegistry") Object metricRegistry) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMetricRegistry(@Named("hikaricp.metricRegistry") Object metricRegistry) {
-    configuration.setMetricRegistry(metricRegistry);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMetricsTrackerFactory(@Named("hikaricp.metricsTrackerFactory") MetricsTrackerFactory metricsTrackerFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMetricsTrackerFactory(
-      @Named("hikaricp.metricsTrackerFactory") MetricsTrackerFactory metricsTrackerFactory) {
-    configuration.setMetricsTrackerFactory(metricsTrackerFactory);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setMinimumIdle(@Named("hikaricp.minimumIdle") int minimumIdle) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setMinimumIdle(@Named("hikaricp.minimumIdle") int minimumIdle) {
-    configuration.setMinimumIdle(minimumIdle);
-  }
+    @Inject
+    public void setPassword(@Named("JDBC.password") String password) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setPassword(@Named("JDBC.password") String password) {
-    configuration.setPassword(password);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setPoolName(@Named("hikaricp.poolName") String poolName) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setPoolName(@Named("hikaricp.poolName") String poolName) {
-    configuration.setPoolName(poolName);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setReadOnly(@Named("hikaricp.readOnly") boolean readOnly) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setReadOnly(@Named("hikaricp.readOnly") boolean readOnly) {
-    configuration.setReadOnly(readOnly);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setRegisterMbeans(@Named("hikaricp.registerMbeans") boolean registerMbeans) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setRegisterMbeans(@Named("hikaricp.registerMbeans") boolean registerMbeans) {
-    configuration.setRegisterMbeans(registerMbeans);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setScheduledExecutor(@Named("hikaricp.scheduledExecutorService") ScheduledExecutorService scheduledExecutorService) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setScheduledExecutor(
-      @Named("hikaricp.scheduledExecutorService") ScheduledExecutorService scheduledExecutorService) {
-    configuration.setScheduledExecutor(scheduledExecutorService);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setSchema(@Named("hikaricp.schema") String schema) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setSchema(@Named("hikaricp.schema") String schema) {
-    configuration.setSchema(schema);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setThreadFactory(@Named("hikaricp.threadFactory") ThreadFactory threadFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setThreadFactory(@Named("hikaricp.threadFactory") ThreadFactory threadFactory) {
-    configuration.setThreadFactory(threadFactory);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setTransactionIsolation(@Named("hikaricp.transactionIsolation") String transactionIsolation) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setTransactionIsolation(@Named("hikaricp.transactionIsolation") String transactionIsolation) {
-    configuration.setTransactionIsolation(transactionIsolation);
-  }
+    @Inject
+    public void setUsername(@Named("JDBC.username") String username) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Inject
-  public void setUsername(@Named("JDBC.username") String username) {
-    configuration.setUsername(username);
-  }
-
-  @com.google.inject.Inject(optional = true)
-  public void setValidationTimeout(@Named("hikaricp.validationTimeoutMs") long validationTimeoutMs) {
-    configuration.setValidationTimeout(validationTimeoutMs);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setValidationTimeout(@Named("hikaricp.validationTimeoutMs") long validationTimeoutMs) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

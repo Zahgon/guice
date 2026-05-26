@@ -26,135 +26,80 @@ import jakarta.transaction.Transaction;
 import jakarta.transaction.TransactionManager;
 
 public enum TransactionAttribute {
-  MANDATORY {
-    @Override
-    public TransactionToken begin(TransactionManager man) throws SystemException {
-      if (man.getStatus() == Status.STATUS_NO_TRANSACTION) {
-        throw new IllegalStateException(
-            "A call is being made on a method that mandates a transaction but there is no current transaction.");
-      }
-      return new TransactionToken(man.getTransaction(), null, MANDATORY);
-    }
-  },
-  NEVER {
-    @Override
-    public TransactionToken begin(TransactionManager man) throws SystemException {
-      if (man.getStatus() == Status.STATUS_ACTIVE) {
-        throw new IllegalStateException(
-            "A call is being made on a method that forbids a transaction but there is a current transaction.");
-      }
-      return new TransactionToken(null, null, NEVER);
-    }
-  },
-  NOTSUPPORTED {
-    @Override
-    public TransactionToken begin(TransactionManager man) throws SystemException {
-      if (man.getStatus() == Status.STATUS_ACTIVE) {
-        return new TransactionToken(null, man.suspend(), this);
-      }
-      return new TransactionToken(null, null, NOTSUPPORTED);
-    }
 
-    @Override
-    public void finish(TransactionManager man, TransactionToken tranToken)
-        throws SystemException, InvalidTransactionException, IllegalStateException {
-      Transaction tran = tranToken.getSuspendedTransaction();
-      if (tran != null) {
-        man.resume(tran);
-      }
-    }
-  },
-  REQUIRED {
-    @Override
-    public TransactionToken begin(TransactionManager man) throws SystemException, NotSupportedException {
-      if (man.getStatus() == Status.STATUS_NO_TRANSACTION) {
-        man.begin();
-        return new TransactionToken(man.getTransaction(), null, REQUIRED, true);
-      }
-      return new TransactionToken(man.getTransaction(), null, REQUIRED);
-    }
+    MANDATORY {
 
-    @Override
-    public void finish(TransactionManager man, TransactionToken tranToken)
-        throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException,
-        RollbackException, HeuristicMixedException, HeuristicRollbackException {
-
-      if (tranToken.isCompletionAllowed()) {
-        if (man.getStatus() == Status.STATUS_MARKED_ROLLBACK) {
-          man.rollback();
-        } else {
-          man.commit();
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-      }
     }
-  },
-  REQUIRESNEW {
-    @Override
-    public TransactionToken begin(TransactionManager man)
-        throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
-      TransactionToken tranToken;
-      if (man.getStatus() == Status.STATUS_ACTIVE) {
-        tranToken = new TransactionToken(null, man.suspend(), REQUIRESNEW);
-      } else {
-        tranToken = new TransactionToken(null, null, REQUIRESNEW);
-      }
+    ,
+    NEVER {
 
-      try {
-        man.begin();
-      } catch (NotSupportedException | SystemException e) {
-        man.resume(tranToken.getSuspendedTransaction());
-        throw e;
-      }
-
-      tranToken.setActiveTransaction(man.getTransaction());
-      tranToken.setCompletionAllowed(true);
-
-      return tranToken;
-    }
-
-    @Override
-    public void finish(TransactionManager man, TransactionToken tranToken)
-        throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException,
-        RollbackException, HeuristicMixedException, HeuristicRollbackException {
-      if (tranToken.isCompletionAllowed()) {
-        if (man.getStatus() == Status.STATUS_MARKED_ROLLBACK) {
-          man.rollback();
-        } else {
-          man.commit();
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-      }
-
-      Transaction tran = tranToken.getSuspendedTransaction();
-      if (tran != null) {
-        man.resume(tran);
-      }
     }
-  },
-  SUPPORTS {
-    @Override
-    public TransactionToken begin(TransactionManager man)
-        throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
-      if (man.getStatus() == Status.STATUS_ACTIVE) {
-        return new TransactionToken(man.getTransaction(), null, SUPPORTS);
-      }
+    ,
+    NOTSUPPORTED {
 
-      return new TransactionToken(null, null, SUPPORTS);
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+
+        @Override
+        public void finish(TransactionManager man, TransactionToken tranToken) throws SystemException, InvalidTransactionException, IllegalStateException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
     }
-  };
+    ,
+    REQUIRED {
 
-  public static TransactionAttribute fromValue(String value) {
-    return valueOf(value.toUpperCase());
-  }
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException, NotSupportedException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
 
-  public TransactionToken begin(TransactionManager man)
-      throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
+        @Override
+        public void finish(TransactionManager man, TransactionToken tranToken) throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    }
+    ,
+    REQUIRESNEW {
 
-    return null;
-  }
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
 
-  public void finish(TransactionManager man, TransactionToken tranToken)
-      throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException, RollbackException,
-      HeuristicMixedException, HeuristicRollbackException {
+        @Override
+        public void finish(TransactionManager man, TransactionToken tranToken) throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    }
+    ,
+    SUPPORTS {
 
-  }
+        @Override
+        public TransactionToken begin(TransactionManager man) throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    }
+    ;
+
+    public static TransactionAttribute fromValue(String value) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public TransactionToken begin(TransactionManager man) throws SystemException, NotSupportedException, InvalidTransactionException, IllegalStateException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public void finish(TransactionManager man, TransactionToken tranToken) throws SystemException, InvalidTransactionException, IllegalStateException, SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

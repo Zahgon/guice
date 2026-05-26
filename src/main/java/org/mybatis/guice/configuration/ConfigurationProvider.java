@@ -16,18 +16,13 @@
 package org.mybatis.guice.configuration;
 
 import com.google.inject.ProvisionException;
-
 import edu.umd.cs.findbugs.annotations.Nullable;
-
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
 import jakarta.inject.Singleton;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.sql.DataSource;
-
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.Environment;
@@ -43,159 +38,125 @@ import org.mybatis.guice.configuration.settings.MapperConfigurationSetting;
 @Singleton
 public class ConfigurationProvider implements Provider<Configuration>, ConfigurationSettingListener {
 
-  /**
-   * The myBatis Configuration reference.
-   */
-  private final Environment environment;
+    /**
+     * The myBatis Configuration reference.
+     */
+    private final Environment environment;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.lazyLoadingEnabled")
-  private boolean lazyLoadingEnabled;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.lazyLoadingEnabled")
+    private boolean lazyLoadingEnabled;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.aggressiveLazyLoading")
-  private boolean aggressiveLazyLoading = true;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.aggressiveLazyLoading")
+    private boolean aggressiveLazyLoading = true;
 
-  @Deprecated
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.multipleResultSetsEnabled")
-  private boolean multipleResultSetsEnabled = true;
+    @Deprecated
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.multipleResultSetsEnabled")
+    private boolean multipleResultSetsEnabled = true;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.useGeneratedKeys")
-  private boolean useGeneratedKeys;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.useGeneratedKeys")
+    private boolean useGeneratedKeys;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.useColumnLabel")
-  private boolean useColumnLabel = true;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.useColumnLabel")
+    private boolean useColumnLabel = true;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.cacheEnabled")
-  private boolean cacheEnabled = true;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.cacheEnabled")
+    private boolean cacheEnabled = true;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.defaultExecutorType")
-  private ExecutorType defaultExecutorType = ExecutorType.SIMPLE;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.defaultExecutorType")
+    private ExecutorType defaultExecutorType = ExecutorType.SIMPLE;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.autoMappingBehavior")
-  private AutoMappingBehavior autoMappingBehavior = AutoMappingBehavior.PARTIAL;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.autoMappingBehavior")
+    private AutoMappingBehavior autoMappingBehavior = AutoMappingBehavior.PARTIAL;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.callSettersOnNulls")
-  private boolean callSettersOnNulls;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.callSettersOnNulls")
+    private boolean callSettersOnNulls;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.defaultStatementTimeout")
-  @Nullable
-  private Integer defaultStatementTimeout;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.defaultStatementTimeout")
+    @Nullable
+    private Integer defaultStatementTimeout;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.mapUnderscoreToCamelCase")
-  private boolean mapUnderscoreToCamelCase;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.mapUnderscoreToCamelCase")
+    private boolean mapUnderscoreToCamelCase;
 
-  @com.google.inject.Inject(optional = true)
-  @Named("mybatis.configuration.failFast")
-  private boolean failFast;
+    @com.google.inject.Inject(optional = true)
+    @Named("mybatis.configuration.failFast")
+    private boolean failFast;
 
-  @com.google.inject.Inject(optional = true)
-  private DatabaseIdProvider databaseIdProvider;
+    @com.google.inject.Inject(optional = true)
+    private DatabaseIdProvider databaseIdProvider;
 
-  @com.google.inject.Inject
-  private DataSource dataSource;
+    @com.google.inject.Inject
+    private DataSource dataSource;
 
-  private Set<ConfigurationSetting> configurationSettings = new HashSet<>();
-  private Set<MapperConfigurationSetting> mapperConfigurationSettings = new HashSet<>();
+    private Set<ConfigurationSetting> configurationSettings = new HashSet<>();
 
-  /**
-   * Instantiates a new configuration provider.
-   *
-   * @param environment
-   *          the environment
-   *
-   * @since 1.0.1
-   */
-  @com.google.inject.Inject
-  public ConfigurationProvider(final Environment environment) {
-    this.environment = environment;
-  }
+    private Set<MapperConfigurationSetting> mapperConfigurationSettings = new HashSet<>();
 
-  @Deprecated
-  public void setEnvironment(Environment environment) {
-    // do nothing
-  }
-
-  /**
-   * Flag to check all statements are completed.
-   *
-   * @param failFast
-   *          flag to check all statements are completed
-   *
-   * @since 1.0.1
-   */
-  public void setFailFast(boolean failFast) {
-    this.failFast = failFast;
-  }
-
-  @Override
-  public void addConfigurationSetting(ConfigurationSetting configurationSetting) {
-    this.configurationSettings.add(configurationSetting);
-  }
-
-  @Override
-  public void addMapperConfigurationSetting(MapperConfigurationSetting mapperConfigurationSetting) {
-    this.mapperConfigurationSettings.add(mapperConfigurationSetting);
-  }
-
-  /**
-   * New configuration.
-   *
-   * @param environment
-   *          the environment
-   *
-   * @return new configuration
-   */
-  protected Configuration newConfiguration(Environment environment) {
-    return new Configuration(environment);
-  }
-
-  @Override
-  public Configuration get() {
-    final Configuration configuration = newConfiguration(environment);
-    configuration.setLazyLoadingEnabled(lazyLoadingEnabled);
-    configuration.setAggressiveLazyLoading(aggressiveLazyLoading);
-    configuration.setUseGeneratedKeys(useGeneratedKeys);
-    configuration.setUseColumnLabel(useColumnLabel);
-    configuration.setCacheEnabled(cacheEnabled);
-    configuration.setDefaultExecutorType(defaultExecutorType);
-    configuration.setAutoMappingBehavior(autoMappingBehavior);
-    configuration.setCallSettersOnNulls(callSettersOnNulls);
-    configuration.setDefaultStatementTimeout(defaultStatementTimeout);
-    configuration.setMapUnderscoreToCamelCase(mapUnderscoreToCamelCase);
-
-    for (ConfigurationSetting setting : configurationSettings) {
-      setting.applyConfigurationSetting(configuration);
+    /**
+     * Instantiates a new configuration provider.
+     *
+     * @param environment
+     *          the environment
+     *
+     * @since 1.0.1
+     */
+    @com.google.inject.Inject
+    public ConfigurationProvider(final Environment environment) {
+        this.environment = environment;
     }
 
-    try {
-      if (databaseIdProvider != null) {
-        configuration.setDatabaseId(databaseIdProvider.getDatabaseId(dataSource));
-      }
-
-      for (MapperConfigurationSetting setting : mapperConfigurationSettings) {
-        setting.applyConfigurationSetting(configuration);
-      }
-
-      if (failFast) {
-        configuration.getMappedStatementNames();
-      }
-    } catch (Throwable cause) {
-      throw new ProvisionException("An error occurred while building the org.apache.ibatis.session.Configuration",
-          cause);
-    } finally {
-      ErrorContext.instance().reset();
+    @Deprecated
+    public void setEnvironment(Environment environment) {
+        // do nothing
     }
 
-    return configuration;
-  }
+    /**
+     * Flag to check all statements are completed.
+     *
+     * @param failFast
+     *          flag to check all statements are completed
+     *
+     * @since 1.0.1
+     */
+    public void setFailFast(boolean failFast) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public void addConfigurationSetting(ConfigurationSetting configurationSetting) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public void addMapperConfigurationSetting(MapperConfigurationSetting mapperConfigurationSetting) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * New configuration.
+     *
+     * @param environment
+     *          the environment
+     *
+     * @return new configuration
+     */
+    protected Configuration newConfiguration(Environment environment) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public Configuration get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -19,15 +19,14 @@ import org.apache.ibatis.session.Configuration;
 
 public class LazyLoadingEnabledConfigurationSetting implements ConfigurationSetting {
 
-  private final boolean lazyLoadingEnabled;
+    private final boolean lazyLoadingEnabled;
 
-  public LazyLoadingEnabledConfigurationSetting(final boolean lazyLoadingEnabled) {
-    this.lazyLoadingEnabled = lazyLoadingEnabled;
-  }
+    public LazyLoadingEnabledConfigurationSetting(final boolean lazyLoadingEnabled) {
+        this.lazyLoadingEnabled = lazyLoadingEnabled;
+    }
 
-  @Override
-  public void applyConfigurationSetting(Configuration configuration) {
-    configuration.setLazyLoadingEnabled(lazyLoadingEnabled);
-  }
-
+    @Override
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

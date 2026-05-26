@@ -18,11 +18,8 @@ package org.mybatis.guice.datasource.builtin;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Provider;
-
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSource;
 
 /**
@@ -30,83 +27,81 @@ import org.apache.ibatis.datasource.unpooled.UnpooledDataSource;
  */
 public final class UnpooledDataSourceProvider implements Provider<DataSource> {
 
-  /**
-   * The UnpooledDataSource reference.
-   */
-  private final UnpooledDataSource unpooledDataSource;
+    /**
+     * The UnpooledDataSource reference.
+     */
+    private final UnpooledDataSource unpooledDataSource;
 
-  /**
-   * Creates a new UnpooledDataSource using the needed parameter.
-   *
-   * @param driver
-   *          The JDBC driver class.
-   * @param url
-   *          the database URL of the form <code>jdbc:subprotocol:subname</code>.
-   * @param driverClassLoader
-   *          ClassLoader to use to load JDBC driver class.
-   */
-  @Inject
-  public UnpooledDataSourceProvider(@Named("JDBC.driver") final String driver, @Named("JDBC.url") final String url,
-      @Named("JDBC.driverClassLoader") final ClassLoader driverClassLoader) {
-    unpooledDataSource = new UnpooledDataSource(driverClassLoader, driver, url, null, null);
-  }
+    /**
+     * Creates a new UnpooledDataSource using the needed parameter.
+     *
+     * @param driver
+     *          The JDBC driver class.
+     * @param url
+     *          the database URL of the form <code>jdbc:subprotocol:subname</code>.
+     * @param driverClassLoader
+     *          ClassLoader to use to load JDBC driver class.
+     */
+    @Inject
+    public UnpooledDataSourceProvider(@Named("JDBC.driver") final String driver, @Named("JDBC.url") final String url, @Named("JDBC.driverClassLoader") final ClassLoader driverClassLoader) {
+        unpooledDataSource = new UnpooledDataSource(driverClassLoader, driver, url, null, null);
+    }
 
-  /**
-   * Sets the user.
-   *
-   * @param username
-   *          the new user
-   *
-   * @since 3.3
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setUser(@Named("JDBC.username") final String username) {
-    unpooledDataSource.setUsername(username);
-  }
+    /**
+     * Sets the user.
+     *
+     * @param username
+     *          the new user
+     *
+     * @since 3.3
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setUser(@Named("JDBC.username") final String username) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the password.
-   *
-   * @param password
-   *          the new password
-   *
-   * @since 3.3
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setPassword(@Named("JDBC.password") final String password) {
-    unpooledDataSource.setPassword(password);
-  }
+    /**
+     * Sets the password.
+     *
+     * @param password
+     *          the new password
+     *
+     * @since 3.3
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setPassword(@Named("JDBC.password") final String password) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the auto commit.
-   *
-   * @param autoCommit
-   *          the new auto commit
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setAutoCommit(@Named("JDBC.autoCommit") final boolean autoCommit) {
-    unpooledDataSource.setAutoCommit(autoCommit);
-  }
+    /**
+     * Sets the auto commit.
+     *
+     * @param autoCommit
+     *          the new auto commit
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setAutoCommit(@Named("JDBC.autoCommit") final boolean autoCommit) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  /**
-   * Sets the login timeout.
-   *
-   * @param loginTimeout
-   *          the new login timeout
-   */
-  @com.google.inject.Inject(optional = true)
-  public void setLoginTimeout(@Named("JDBC.loginTimeout") final int loginTimeout) {
-    unpooledDataSource.setLoginTimeout(loginTimeout);
-  }
+    /**
+     * Sets the login timeout.
+     *
+     * @param loginTimeout
+     *          the new login timeout
+     */
+    @com.google.inject.Inject(optional = true)
+    public void setLoginTimeout(@Named("JDBC.loginTimeout") final int loginTimeout) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @com.google.inject.Inject(optional = true)
-  public void setDriverProperties(@Named("JDBC.driverProperties") final Properties driverProperties) {
-    unpooledDataSource.setDriverProperties(driverProperties);
-  }
+    @com.google.inject.Inject(optional = true)
+    public void setDriverProperties(@Named("JDBC.driverProperties") final Properties driverProperties) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public DataSource get() {
-    return unpooledDataSource;
-  }
-
+    @Override
+    public DataSource get() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

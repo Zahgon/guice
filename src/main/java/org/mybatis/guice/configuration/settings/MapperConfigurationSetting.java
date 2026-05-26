@@ -19,16 +19,13 @@ import org.apache.ibatis.session.Configuration;
 
 public final class MapperConfigurationSetting {
 
-  private final Class<?> mapperClass;
+    private final Class<?> mapperClass;
 
-  public MapperConfigurationSetting(Class<?> mapperClass) {
-    this.mapperClass = mapperClass;
-  }
-
-  public void applyConfigurationSetting(Configuration configuration) {
-    if (!configuration.hasMapper(mapperClass)) {
-      configuration.addMapper(mapperClass);
+    public MapperConfigurationSetting(Class<?> mapperClass) {
+        this.mapperClass = mapperClass;
     }
-  }
 
+    public void applyConfigurationSetting(Configuration configuration) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }
